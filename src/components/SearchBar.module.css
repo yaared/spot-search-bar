@@ -1,8 +1,18 @@
 .searchContainer {
-  position: relative;
+  position: fixed;
+  left: 2rem;
+  top: 2rem;
   width: 100%;
-  max-width: 540px;
-  transform: translateY(-30vh);
+  max-width: 1200px;
+  display: flex;
+}
+
+.searchWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 540px;
+  flex-shrink: 0;
 }
 
 .searchInput {
@@ -31,24 +41,72 @@
   font-weight: 400;
 }
 
+.resultsContainer {
+  display: flex;
+  gap: 2rem;
+}
+
 .dropdown {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
-  right: 0;
+  width: 100%;
   background: #1f2937;
   border: 1px solid #374151;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-height: 400px;
+  max-height: calc(100vh - 8rem);
   overflow-y: auto;
   z-index: 1000;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .dropdown::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+}
+
+.summaryPanel {
+  position: fixed;
+  left: calc(540px + 4rem); /* searchWrapper width + gap */
+  top: 2rem;
+  width: calc(100% - 540px - 6rem); /* Full width minus searchWrapper and margins */
+  max-width: 800px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.summaryLoading {
+  color: #9ca3af;
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 2rem;
+}
+
+.summaryError {
+  color: #ef4444;
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 2rem;
+}
+
+.summaryContent {
+  color: #e5e7eb;
+}
+
+.summaryContent h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #9ca3af;
+}
+
+.summaryContent p {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: #d1d5db;
 }
 
 .dropdownItem {
