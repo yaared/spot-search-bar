@@ -105,6 +105,7 @@ export default function SearchBar() {
                 <div className={styles.resultHeader}>
                   <span className={styles.fileName}>{result.payload.name}</span>
                   <span className={styles.fileType}>{result.payload.extension}</span>
+                  <span className={styles.score}>{Math.round(result.score * 100)}%</span>
                 </div>
                 <div className={styles.resultMeta}>
                   {result.payload.author && (
