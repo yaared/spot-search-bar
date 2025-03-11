@@ -111,7 +111,7 @@ export default function SearchBar() {
       setSummary({ isLoading: true, content: null, error: null });
       setSelectedFile(fileName);
       
-      const response = await fetch('${API_URL}/summarize', {
+      const response = await fetch(`${API_URL}/summarize`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
