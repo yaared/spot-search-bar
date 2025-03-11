@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, KeyboardEvent, useRef } from 'react';
 import styles from './SearchBar.module.css';
 
+const API_URL = 'https://web-production-12bb6.up.railway.app';
+
 interface SearchResult {
   id: string;
   score: number;
@@ -53,7 +55,7 @@ export default function SearchBar() {
   const searchAPI = useCallback(async (searchQuery: string) => {
     try {
       setIsLoading(true);
-      const response = await fetch(`http://127.0.0.1:8000/search?query=${encodeURIComponent(searchQuery)}`);
+      const response = await fetch(`${API_URL}/search?query=${encodeURIComponent(searchQuery)}`);
       if (!response.ok) throw new Error('Search failed');
       const data: SearchResponse = await response.json();
       setResults(data.results);
@@ -109,7 +111,7 @@ export default function SearchBar() {
       setSummary({ isLoading: true, content: null, error: null });
       setSelectedFile(fileName);
       
-      const response = await fetch('http://127.0.0.1:8000/summarize', {
+      const response = await fetch('${API_URL}/summarize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
